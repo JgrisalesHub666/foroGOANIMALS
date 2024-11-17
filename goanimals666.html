@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GoAnimalsFusagasuga Foro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        #forum-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #comment-list {
+            margin-top: 20px;
+        }
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .comment-name {
+            font-weight: bold;
+        }
+        .comment-text {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="forum-container">
+        <h1>GoAnimalsFusagasuga</h1>
+        <h3>Foro de Verificación y Preguntas respecto al proyecto</h3>
+
+        <form id="comment-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required><br><br>
+            <label for="comment">Comentario:</label><br>
+            <textarea id="comment" rows="4" cols="50" required></textarea><br><br>
+            <button type="submit">Publicar</button>
+        </form>
+
+        <div id="comment-list"></div>
+
+        <footer>
+            <p>&copy; Creado por Juan Pablo Grisales</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("comment-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe
+
+            // Obtener los valores del formulario
+            const name = document.getElementById("name").value;
+            const comment = document.getElementById("comment").value;
+
+            // Crear un nuevo elemento para el comentario
+            const commentElement = document.createElement("div");
+            commentElement.classList.add("comment");
+            commentElement.innerHTML = `
+                <p class="comment-name">${name}</p>
+                <p class="comment-text">${comment}</p>
+            `;
+
+            // Agregar el comentario a la lista de comentarios
+            document.getElementById("comment-list").appendChild(commentElement);
+
+            // Limpiar el formulario
+            document.getElementById("comment-form").reset();
+        });
+    </script>
+</body>
+</html>
